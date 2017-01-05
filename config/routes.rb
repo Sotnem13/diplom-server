@@ -1,7 +1,19 @@
 Rails.application.routes.draw do
-  get 'video/show'
 
-  get 'video/index'
+
+  root 'page#index'
+  post 'login', to: 'page#login', as: :login
+  resources :video
+  get 'application/:id', to: 'page#app_show', as: :application
+  get 'tester/:id', to: 'page#tester_show', as: :tester
+  namespace :api do
+    namespace :v1 do
+
+      post 'record', to: 'record#create'
+
+    end
+  end
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

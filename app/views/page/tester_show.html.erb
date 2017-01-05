@@ -1,0 +1,84 @@
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Пользователь: '<%= @tester.name %>'</th>
+  </tr>
+  <% unless @tester.descriptions.nil? %>
+      <tr>
+        <th>Описание: '<%= @app.descriptions %>'</th>
+      </tr>
+  <% end %>
+  <tr>
+    <th>Фото</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tester.photos.each do |app| %>
+      <tr>
+        <td>
+          <%= link_to 'javascript:void(0)' do %>
+
+          <% end %>
+        </td>
+      </tr>
+  <% end %>
+  <tr>
+
+    <td>
+      <%= link_to 'javascript:void(0)', 'data-toggle':"modal", 'data-target':".bs-example-modal-lg"  do %>
+          <!--<div class="image_preview">-->
+          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
+          <!--</div>-->
+      <% end %>
+      <%= link_to 'javascript:void(0)' do %>
+          <!--<div class="image_preview">-->
+          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
+          <!--</div>-->
+      <% end %>
+      <%= link_to 'javascript:void(0)' do %>
+          <!--<div class="image_preview">-->
+          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
+          <!--</div>-->
+      <% end %>
+
+      <%= link_to 'javascript:void(0)' do %>
+          <!--<div class="image_preview">-->
+          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
+          <!--</div>-->
+      <% end %>
+      <%= link_to 'javascript:void(0)' do %>
+          <!--<div class="image_preview">-->
+          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
+          <!--</div>-->
+      <% end %>
+    </td>
+
+  </tr>
+  </tbody>
+</table>
+
+<table class="table table-striped">
+  <thead>
+  <tr>
+    <th>Видео</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @tester.videos.each do |app| %>
+      <tr>
+        <td><%= link_to app.name,tester_path(app) %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="image">
+      </div>
+    </div>
+  </div>
+</div>
+

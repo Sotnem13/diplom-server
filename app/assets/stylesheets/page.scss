@@ -1,0 +1,26 @@
+// Place all the styles related to the page controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.login_form {
+
+}
+
+.modal-content {
+  .image {
+    //position: absolute;
+    width: 100%;
+    height: 600px;
+    //top: 12.5%;
+    //left: 12.5%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}
+
+.image_preview {
+  width: 22%;
+  height: 22%;
+  padding-top: 10px;
+}
