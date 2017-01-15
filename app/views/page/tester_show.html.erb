@@ -13,46 +13,14 @@
   </tr>
   </thead>
   <tbody>
-  <% @tester.photos.each do |app| %>
-      <tr>
-        <td>
-          <%= link_to 'javascript:void(0)' do %>
-
-          <% end %>
-        </td>
-      </tr>
-  <% end %>
   <tr>
-
     <td>
-      <%= link_to 'javascript:void(0)', 'data-toggle':"modal", 'data-target':".bs-example-modal-lg"  do %>
-          <!--<div class="image_preview">-->
-          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
-          <!--</div>-->
-      <% end %>
-      <%= link_to 'javascript:void(0)' do %>
-          <!--<div class="image_preview">-->
-          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
-          <!--</div>-->
-      <% end %>
-      <%= link_to 'javascript:void(0)' do %>
-          <!--<div class="image_preview">-->
-          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
-          <!--</div>-->
-      <% end %>
-
-      <%= link_to 'javascript:void(0)' do %>
-          <!--<div class="image_preview">-->
-          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
-          <!--</div>-->
-      <% end %>
-      <%= link_to 'javascript:void(0)' do %>
-          <!--<div class="image_preview">-->
-          <%= image_tag 'main_headre_background2.jpg', class: 'image_preview' %>
-          <!--</div>-->
-      <% end %>
+  <% @tester.photos.each do |photo| %>
+          <%= link_to 'javascript:void(0)', 'data-toggle':"modal", 'data-target':".bs-example-modal-lg" do %>
+              <%= image_tag photo.image, class: 'image_preview' %>
+          <% end %>
+  <% end %>
     </td>
-
   </tr>
   </tbody>
 </table>

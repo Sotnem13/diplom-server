@@ -47,4 +47,4 @@ end
 
 gem 'twitter-bootstrap-rails'
 gem 'carrierwave'
-
+gem 'dropbox-sdk'

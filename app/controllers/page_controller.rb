@@ -13,6 +13,7 @@ class PageController < ApplicationController
 
   def tester_show
     @tester = Tester.find_by(id: params[:id])
+    @photos = @tester.photos
   end
 
 
