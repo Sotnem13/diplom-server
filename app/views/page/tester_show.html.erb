@@ -17,7 +17,7 @@
     <td>
   <% @tester.photos.each do |photo| %>
           <%= link_to 'javascript:void(0)', 'data-toggle':"modal", 'data-target':".bs-example-modal-lg" do %>
-              <%= image_tag photo.image, class: 'image_preview' %>
+              <%= image_tag photo_path(photo), class: 'image_preview' %>
           <% end %>
   <% end %>
     </td>
