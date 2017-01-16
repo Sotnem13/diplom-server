@@ -39,7 +39,7 @@ class Api::V1::RecordController < ApplicationController
     params[:data][:images].each do |image_data|
       photo = Photo.new
       emotions = image_data[:emotions]
-      photo.image = Base64::decode64(image_data[:data])
+      photo.image = image_data[:data]
       photo.imageable = user
       # photo.application = app
       photo.save

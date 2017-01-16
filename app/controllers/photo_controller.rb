@@ -6,7 +6,7 @@ class PhotoController < ApplicationController
     data = if photo.nil? || photo.image.nil?
       File.read( 'public/404.png' )
     else
-      photo.image
+      Base64::decode64(photo.image)
     end
 
     send_data( data, type: 'image/png', disposition: 'inline')
