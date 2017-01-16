@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :video
   get 'application/:id', to: 'page#app_show', as: :application
   get 'tester/:id', to: 'page#tester_show', as: :tester
+
+  get 'photo/:id', to: 'photo#show', as: :photo
+
   namespace :api do
     namespace :v1 do
 

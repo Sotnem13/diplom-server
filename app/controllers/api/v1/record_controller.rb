@@ -39,13 +39,7 @@ class Api::V1::RecordController < ApplicationController
     params[:data][:images].each do |image_data|
       photo = Photo.new
       emotions = image_data[:emotions]
-      file_name = "/#{(Photo.last && Photo.last.id || 0) + 1}.png"
-      client.put_file(file_name, Base64::decode64(image_data[:data]))
-      file_info = client.shares( file_name )
-      response = Net::HTTP.get_response URI(file_info['url'])
-      url = response['location'] + '&raw=1'
-      response = Net::HTTP.get_response URI(url)
-      photo.image = response['location']
+      photo.image = Base64::decode64(image_data[:data])
       photo.imageable = user
       # photo.application = app
       photo.save
