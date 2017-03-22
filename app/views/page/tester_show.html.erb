@@ -16,7 +16,7 @@
   <tr>
     <td>
   <% @tester.photos.each do |photo| %>
-          <%= link_to 'javascript:void(0)', 'data-toggle':"modal", 'data-target':".bs-example-modal-lg" do %>
+          <%= link_to 'javascript:void(0)', 'data-toggle': "modal", 'data-target':".bs-example-modal-lg" do %>
               <%= image_tag photo_path(photo), class: 'image_preview' %>
           <% end %>
   <% end %>
@@ -32,11 +32,15 @@
   </tr>
   </thead>
   <tbody>
-  <% @tester.videos.each do |app| %>
-      <tr>
-        <td><%= link_to app.name,tester_path(app) %></td>
-      </tr>
+  <tr>
+    <td>
+  <% @tester.videos.each do |video| %>
+      <%= link_to 'javascript:void(0)', 'data-toggle': "modal", 'data-target':".bs-example-modal-lg" do %>
+        <%= video_tag video_path(video), class: 'image_preview' %>
+      <% end %>
   <% end %>
+    </td>
+  </tr>
   </tbody>
 </table>
 

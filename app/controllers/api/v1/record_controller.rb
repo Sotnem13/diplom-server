@@ -15,19 +15,21 @@ class Api::V1::RecordController < ApplicationController
   #                 emotions: []
   #             }
   #         ],
-  #         video: []
+  #         video: [
+  #             {
+  #                data: ""
+  #             }
+  #         ]
   #     }
   # }
 
-
+  skip_before_action :check_auth
 
   def create
-
 
     access_token = 'qc7CA2wpo-AAAAAAAAAAPluWoZgWI9IIh2D3AF_LHucTiDVh3qfQIRIaGex9NsnK'
     client = DropboxClient.new(access_token)
 
-0
     record  = params[:record]
 
     app = Application.find_or_create_by(name: record[:app_name], description: record[:app_desc])
@@ -35,26 +37,41 @@ class Api::V1::RecordController < ApplicationController
 
 
     destroy_all_data(app,user)
-
-    params[:data][:images].each do |image_data|
+    images = params[:data][:images]
+    videos = params[:data][:videos]
+    images && images.each do |image_data|
       photo = Photo.new
       emotions = image_data[:emotions]
       photo.image = image_data[:data]
       photo.imageable = user
       # photo.application = app
       photo.save
-      emotions.each do |e|
+
+      emotions && emotions.each do |e|
         Emotion.create(name: e,photo: photo)
       end
     end
-    # params[:data][:videos].each do
-    #
-    # end
+    videos && videos.each do |video_data|
+      video = Video.new
+      video.data = video_data[:data]
+      video.application = app
+      video.tester = user
+      video.save
+    end
 
-
-    puts "\n\n\n" + '#'*50 + "\n#{params}\n\n\n"
     render json: {
-        message: 'ещё не запилино =)'
+        result: app.to_json
+    }
+  end
+
+  def upload_video
+    app = Application.find_by(id: params[:id])
+    tester = Tester.find_by(name: params[:user_name])
+    params[:videos].each do |video_data|
+
+    end
+    render json: {
+        result: 'success'
     }
   end
 
@@ -62,6 +79,7 @@ class Api::V1::RecordController < ApplicationController
 
   def destroy_all_data app,user
     Photo.where(imageable: user).destroy_all
+    Video.where(tester: user).destroy_all
   end
 
 end

@@ -3,7 +3,17 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .login_form {
-
+  input {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    //border: none;
+    //border-bottom: 1px solid #2E2F30;
+  }
+  input[type="submit"] {
+    //border: 1px solid #2E2F30;
+    border-radius: 5px;
+  }
 }
 
 .modal-content {
