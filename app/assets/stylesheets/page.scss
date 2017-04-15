@@ -27,20 +27,25 @@
     background-position: center;
     background-size: contain;
   }
+
 }
 
 .image_preview {
   width: 22%;
-  height: 22%;
+  //height: 22%;
   padding-top: 10px;
 }
 
 .video_preview {
   width: 22%;
-  height: 22%;
+  //height: 22%;
   padding-top: 10px;
 }
 
 .video {
   text-align: center;
+}
+.emoji {
+  text-align: center;
+  margin: 15px;
 }

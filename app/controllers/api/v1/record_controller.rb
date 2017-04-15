@@ -17,7 +17,9 @@ class Api::V1::RecordController < ApplicationController
   #         ],
   #         video: [
   #             {
-  #                data: ""
+  #                data: "",
+  #                emotions: [],
+  #                duration: ''
   #             }
   #         ]
   #     }
@@ -53,10 +55,15 @@ class Api::V1::RecordController < ApplicationController
     end
     videos && videos.each do |video_data|
       video = Video.new
+      emotions = video_data[:emotions]
       video.data = video_data[:data]
+      video.duration = video_data[:duration]
       video.application = app
       video.tester = user
       video.save
+      emotions && emotions.each do |e|
+        Emotion.create(name: e,video: video)
+      end
     end
 
     render json: {

@@ -17,7 +17,7 @@
     <td>
   <% @tester.photos.each do |photo| %>
           <%= link_to 'javascript:void(0)', 'data-toggle': "modal", 'data-target':".bs-example-modal-lg" do %>
-              <%= image_tag photo_path(photo), class: 'image_preview' %>
+              <%= image_tag photo_path(photo), class: 'image_preview', 'data-emoji': photo.emojis  %>
           <% end %>
   <% end %>
     </td>
@@ -52,6 +52,8 @@
       </div>
       <div class="video">
         <%= video_tag '', id: 'video', controls: 'controls' %>
+      </div>
+      <div class="emoji">
       </div>
     </div>
   </div>
