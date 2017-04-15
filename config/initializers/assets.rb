@@ -11,5 +11,5 @@ Rails.application.config.assets.version = '1.0'
 # Rails.application.config.assets.precompile += %w( search.js )
 
 
-# Emoji.asset_path = '/assets/emoji'
+Emoji.asset_path = 'emoji'
 # Emoji.use_plaintext_alt_tags = true
