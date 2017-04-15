@@ -19,7 +19,7 @@ $(document).ready(function () {
         $('#video')[0].src = this.src;
         $('#video').show();
 
-        $('.modal-content .emoji').hide();
+        $('.modal-content .emoji').html( $(this).data('emoji') );
         $('.modal-content .image').hide();
     });
 
