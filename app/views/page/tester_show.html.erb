@@ -16,7 +16,7 @@
   <tr>
     <td>
   <% @tester.photos.each do |photo| %>
-          <%= link_to 'javascript:void(0)', 'data-toggle': "modal", 'data-target':".bs-example-modal-lg" do %>
+          <%= link_to '#modal', 'data-toggle': "modal" do %>
               <%= image_tag photo_path(photo), class: 'image_preview', 'data-emoji': photo.emojis  %>
           <% end %>
   <% end %>
@@ -35,8 +35,11 @@
   <tr>
     <td>
   <% @tester.videos.each do |video| %>
-      <%= link_to 'javascript:void(0)', 'data-toggle': "modal", 'data-target':".bs-example-modal-lg" do %>
-        <%= video_tag video_path(video), class: 'video_preview', 'data-emoji': video.emojis %>
+      <%= link_to '#modal', 'data-toggle': "modal" do %>
+        <%= video_tag video_path(video), class: 'video_preview', preload: 'auto', 'data-id': video.id  %>
+        <div style="display: none;" id="video_<%= video.id %>" >
+          <%= video.emojis.to_json %>
+        </div>
       <% end %>
   <% end %>
     </td>
@@ -45,7 +48,7 @@
 </table>
 
 
-<div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+<div class="modal fade" id="modal" tabindex="-1" role="dialog">
   <div class="modal-dialog modal-lg" role="document">
     <div class="modal-content">
       <div class="image">

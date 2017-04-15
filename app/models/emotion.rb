@@ -7,4 +7,6 @@ class Emotion < ActiveRecord::Base
   validates :photo_id, presence: true, if: 'video_id.nil?'
   validates :video_id, presence: true, if: 'photo_id.nil?'
 
+  validates :start, :finish, presence: true, if: 'video'
+
 end

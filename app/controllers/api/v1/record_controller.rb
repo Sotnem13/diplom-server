@@ -18,8 +18,14 @@ class Api::V1::RecordController < ApplicationController
   #         video: [
   #             {
   #                data: "",
-  #                emotions: [],
-  #                duration: ''
+  #                emotions: [
+  #                    {
+  #                        name: ' ',
+  #                        start: ' ',
+  #                        finish: ' '
+  #                    }
+  #                ],
+  #                duration: ' '
   #             }
   #         ]
   #     }
@@ -29,10 +35,7 @@ class Api::V1::RecordController < ApplicationController
 
   def create
 
-    access_token = 'qc7CA2wpo-AAAAAAAAAAPluWoZgWI9IIh2D3AF_LHucTiDVh3qfQIRIaGex9NsnK'
-    client = DropboxClient.new(access_token)
-
-    record  = params[:record]
+    record = params[:record]
 
     app = Application.find_or_create_by(name: record[:app_name], description: record[:app_desc])
     user = Tester.find_or_create_by( application: app, name: record[:user_name], descriptions: record[:user_desc] )
@@ -62,8 +65,12 @@ class Api::V1::RecordController < ApplicationController
       video.tester = user
       video.save
       emotions && emotions.each do |e|
-        Emotion.create(name: e,video: video)
+        name = e[:name]
+        start = e[:start]
+        finish = e[:finish]
+        Emotion.create(name: name,video: video,start: start, finish: finish)
       end
+
     end
 
     render json: {

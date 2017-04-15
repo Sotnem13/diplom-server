@@ -50,3 +50,6 @@ gem 'carrierwave'
 gem 'dropbox-sdk'
 
 gem 'emoji'
+
+gem 'chartkick'
+

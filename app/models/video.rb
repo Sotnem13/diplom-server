@@ -10,14 +10,17 @@ class Video < ActiveRecord::Base
   accepts_nested_attributes_for :emotions, allow_destroy: true
 
   def emojis
-    data = emotions.map(&:name)
-    result = data.map do |e|
-      image = Emoji.image_url_for_unicode_moji(e)
-      asset_path = ActionController::Base.helpers.asset_path(image)
-      ActionController::Base.helpers.image_tag(asset_path)
-    end.join(' ')
-    result.tr!('"', "'")
-    result
+    emoji_index = Emoji::Index.new
+    timeline = emotions.map do |e|
+      name = emoji_index.find_by_moji(e.name)['name']
+      [name, e.start, e.finish]
+    end
+    pie = timeline.reduce({}) do |e,k|
+      e[k[0]] ||= 0
+      e[k[0]] += 1
+      e
+    end
+    [timeline,pie]
   end
 
 end

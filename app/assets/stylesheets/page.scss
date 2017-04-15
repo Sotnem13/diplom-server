@@ -39,11 +39,17 @@
 .video_preview {
   width: 22%;
   //height: 22%;
+  border: solid 1px;
   padding-top: 10px;
 }
 
 .video {
   text-align: center;
+}
+
+.emoji {
+  text-align: center;
+  margin: 15px;
 }
 .emoji {
   text-align: center;
