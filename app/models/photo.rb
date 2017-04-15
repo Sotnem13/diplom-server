@@ -11,7 +11,9 @@ class Photo < ActiveRecord::Base
   def emojis
     data = emotions.map(&:name)
     result = data.map do |e|
-      ActionController::Base.helpers.image_tag(Emoji.image_url_for_unicode_moji(e))
+      image = Emoji.image_url_for_unicode_moji(e)
+      asset_path = ActionController::Base.helpers.asset_path(image)
+      ActionController::Base.helpers.image_tag(asset_path)
     end.join(' ')
     result.tr!('"', "'")
     result
